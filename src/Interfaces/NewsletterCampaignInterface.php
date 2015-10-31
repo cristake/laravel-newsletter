@@ -15,4 +15,13 @@ interface NewsletterCampaignInterface
      * @return mixed
      */
     public function create($list, $subject, $content);
+
+    /**
+     * Delete a new newsletter campaign.
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function delete($cid);
 }

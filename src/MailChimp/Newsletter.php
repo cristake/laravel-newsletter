@@ -24,7 +24,6 @@ class Newsletter implements NewsletterInterface
     /**
      * Create a new newsletter campaign.
      *
-
      * @param $subject
      * @param $content
      * @param $list
@@ -34,6 +33,18 @@ class Newsletter implements NewsletterInterface
     public function createCampaign($subject, $content, $list = '')
     {
         return $this->campaign->create($subject, $content, $list);
+    }
+
+    /**
+     * Delete a newsletter campaign.
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function deleteCampaign($cid)
+    {
+        return $this->campaign->delete($cid);
     }
 
     /**

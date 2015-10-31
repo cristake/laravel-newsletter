@@ -50,4 +50,14 @@ class NewsletterTest extends PHPUnit_Framework_TestCase
 
         $this->newsletter->createCampaign('subject', 'content', 'testlist');
     }
+
+   /**
+     * @test
+     */
+    public function it_can_delete_a_campaign()
+    {
+        $this->campaign->shouldReceive('delete')->with('cid');
+
+        $this->newsletter->deleteCampaign('cid');
+    }
 }

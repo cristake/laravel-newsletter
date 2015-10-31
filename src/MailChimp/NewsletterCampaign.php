@@ -32,6 +32,19 @@ class NewsletterCampaign extends MailChimpBase implements NewsletterCampaignInte
     }
 
     /**
+     * Delete a MailChimp Campaign.
+     *
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function delete($cid)
+    {
+        return $this->mailChimp->campaigns->delete($cid);
+    }
+
+    /**
      * Method to provide backwards compatibility with older versions of the config file.
      *
      * @param $listProperties
