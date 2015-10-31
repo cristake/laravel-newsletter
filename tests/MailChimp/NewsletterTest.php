@@ -60,4 +60,24 @@ class NewsletterTest extends PHPUnit_Framework_TestCase
 
         $this->newsletter->deleteCampaign('cid');
     }
+
+   /**
+     * @test
+     */
+    public function it_can_send_a_test_campaign()
+    {
+        $this->campaign->shouldReceive('sendTest')->with('cid', 'emails', 'sendType');
+
+        $this->newsletter->sendTestCampaign('cid', 'emails', 'sendType');
+    }
+
+   /**
+     * @test
+     */
+    public function it_can_send_a_campaign()
+    {
+        $this->campaign->shouldReceive('send')->with('cid');
+
+        $this->newsletter->sendCampaign('cid');
+    }
 }

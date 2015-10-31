@@ -22,6 +22,18 @@ class Newsletter implements NewsletterInterface
     }
 
     /**
+     * Delete a newsletter campaign.
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function deleteCampaign($cid)
+    {
+        return $this->campaign->delete($cid);
+    }
+
+    /**
      * Create a new newsletter campaign.
      *
      * @param $subject
@@ -36,15 +48,31 @@ class Newsletter implements NewsletterInterface
     }
 
     /**
-     * Delete a newsletter campaign.
+     * Send a test newsletter campaign.
      *
-     * @param $cid
+     * @param $subject
+     * @param $content
+     * @param $list
      *
      * @return mixed
      */
-    public function deleteCampaign($cid)
+    public function sendTestCampaign($cid, $emails = [], $send_type = '')
     {
-        return $this->campaign->delete($cid);
+        return $this->campaign->sendTest($cid, $emails, $send_type);
+    }
+
+    /**
+     * Send a newsletter campaign.
+     *
+     * @param $subject
+     * @param $content
+     * @param $list
+     *
+     * @return mixed
+     */
+    public function sendCampaign($cid)
+    {
+        return $this->campaign->send($cid);
     }
 
     /**

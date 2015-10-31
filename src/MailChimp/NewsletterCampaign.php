@@ -32,6 +32,32 @@ class NewsletterCampaign extends MailChimpBase implements NewsletterCampaignInte
     }
 
     /**
+     * Send a test MailChimp Campaign.
+     *
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function sendTest($cid, $emails = [], $send_type = '')
+    {
+        return $this->mailChimp->campaigns->sendTest($cid, $emails, $send_type);
+    }
+
+    /**
+     * Send a MailChimp Campaign.
+     *
+     *
+     * @param $cid
+     *
+     * @return mixed
+     */
+    public function send($cid)
+    {
+        return $this->mailChimp->campaigns->send($cid);
+    }
+
+    /**
      * Delete a MailChimp Campaign.
      *
      *
