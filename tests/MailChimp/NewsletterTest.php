@@ -34,6 +34,16 @@ class NewsletterTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_can_update_a_member_subscibed_to_a_list()
+    {
+        $this->list->shouldReceive('updateMember')->with('freek@spatie.be',['firstName'=>'Freek', 'lastName'=>'Van der Herten'], 'testlist');
+
+        $this->newsletter->updateMember('freek@spatie.be', ['firstName'=>'Freek', 'lastName'=>'Van der Herten'], 'testlist');
+    }
+
+    /**
+     * @test
+     */
     public function it_can_unsubscribe_an_email_address_from_a_list()
     {
         $this->list->shouldReceive('unsubscribe')->with('freek@spatie.be', 'testlist');

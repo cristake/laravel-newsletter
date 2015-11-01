@@ -80,4 +80,37 @@ class NewsletterList extends MailChimpBase implements NewsletterListInterface
         );
     }
 
+    /**
+     * Update a member subscibed to a list
+     *
+     * @param $email
+     * @param $list
+     *
+     * @return mixed
+     */
+    public function updateMember($email, $mergeVars = [], $listName = '')
+    {
+        $listProperties = $this->getListProperties($listName);
+
+        $emailType = 'html';
+        $replace_interests = true;
+
+        if (isset($listProperties['updateMember'])) {
+            $emailType = $listProperties['updateMember']['emailType'];
+        }
+
+        try {
+            return $this->mailChimp->lists->updateMember(
+                $id,
+                compact('email'),
+                $mergeVars,
+                $emailType,
+                $replace_interests
+            );
+        } catch (\Mailchimp_List_AlreadySubscribed $exception) {
+            throw new AlreadySubscribed();
+        } catch (\Mailchimp_Error $exception) {
+            throw new ServiceRefusedSubscription($exception->getMessage());
+        }
+    }
 }

@@ -89,6 +89,19 @@ class Newsletter implements NewsletterInterface
     }
 
     /**
+     * Update a member subscibed to a list
+     *
+     * @param $email
+     * @param array $mergeVars
+     * @param string $list
+     * @return mixed
+     */
+    public function updateMember($email, $mergeVars = [],  $list = '')
+    {
+        return $this->list->updateMember($email, $mergeVars, $list);
+    }
+
+    /**
      * Unsubscribe the email address to given list.
      *
      * @param $email
