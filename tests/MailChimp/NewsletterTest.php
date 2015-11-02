@@ -61,6 +61,16 @@ class NewsletterTest extends PHPUnit_Framework_TestCase
         $this->newsletter->createCampaign('subject', 'content', 'testlist');
     }
 
+    /**
+     * @test
+     */
+    public function it_can_update_a_campaign()
+    {
+        $this->campaign->shouldReceive('update')->with('cid', 'content', 'key', ['key' => 'value']);
+
+        $this->newsletter->updateCampaign('cid', 'content', 'key', ['key' => 'value']);
+    }
+
    /**
      * @test
      */

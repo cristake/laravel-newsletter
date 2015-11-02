@@ -17,6 +17,18 @@ interface NewsletterCampaignInterface
     public function create($list, $subject, $content);
 
     /**
+     * Create a new newsletter campaign.
+     *
+     * @param $cid string
+     * @param $name string The parameter name ( see campaigns/create() ). This will be that parameter name (options, content, segment_opts) except "type_opts"
+     * @param $key string The key of the parameter
+     * @param $value array An appropriate set of values for the parameter ( see campaigns/create() ). For additional parameters, this is the same value passed to them.
+     *
+     * @return mixed
+     */
+    public function update($cid, $name, $key, $value);
+
+    /**
      * Send a test newsletter campaign.
      *
      * @param $list

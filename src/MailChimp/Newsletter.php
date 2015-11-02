@@ -48,6 +48,20 @@ class Newsletter implements NewsletterInterface
     }
 
     /**
+     * Create a new newsletter campaign.
+     *
+     * @param $cid string
+     * @param $name string
+     * @param $value array
+     *
+     * @return mixed
+     */
+    public function updateCampaign($cid, $name, $key, $value = [])
+    {
+        return $this->campaign->update($cid, $name, $key, $value);
+    }
+
+    /**
      * Send a test newsletter campaign.
      *
      * @param $subject

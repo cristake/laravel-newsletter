@@ -32,6 +32,26 @@ class NewsletterCampaign extends MailChimpBase implements NewsletterCampaignInte
     }
 
     /**
+     * Create a new newsletter campaign.
+     *
+     * @param $list
+     * @param $subject
+     * @param $content
+     *
+     * @return mixed
+     */
+    public function update($cid, $name, $key, $value)
+    {
+        return $this->mailChimp->campaigns->update(
+            $cid,
+            $name,
+            [
+                $key => $value
+            ]
+        );
+    }
+
+    /**
      * Send a test MailChimp Campaign.
      *
      *
